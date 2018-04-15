@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  date_of_birth: 2018-04-15
+  race: MyString
+  residential_address: MyString
+  code: MyString
+  cell_number: MyString
+  email: MyString
+  current_weight: 1
+  current_height: 1
+  belt: MyString
+  is_affiliated: false
+
+two:
+  first_name: MyString
+  last_name: MyString
+  date_of_birth: 2018-04-15
+  race: MyString
+  residential_address: MyString
+  code: MyString
+  cell_number: MyString
+  email: MyString
+  current_weight: 1
+  current_height: 1
+  belt: MyString
+  is_affiliated: false

@@ -7,7 +7,7 @@
         <th data-toggle="sort" class="col-sm-3" tabindex="0">Name</th>
         <th data-toggle="sort" class="col-sm-2" tabindex="0">Belt</th>
         <th data-toggle="sort" class="col-sm-3 text-right" tabindex="0">Race</th>
-        <th class="col-sm-2 text-center">Payment</th>
+        <th data-toggle="sort" class="col-sm-2 text-center">Age</th>
         <th></th>
       </tr>
     </thead>
@@ -32,7 +32,7 @@
             <%= member.race %>
           </td>
           <td class="text-center">
-
+            <%= member.age %>
           </td>
           <td class="table-cell-actions">
             <%= link_to edit_member_path(member), class: 'item-action', title: 'Edit' do %>

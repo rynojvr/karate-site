@@ -5,7 +5,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all.paginate(page: params[:page])
+    @members = Member.all.order(last_name: :asc, first_name: :asc).paginate(page: params[:page])
     @lebels =  Hash[@members.collect { |m| [m.id, [{type: 'general', text: 'affiliated'}] ] } ]
   end
 

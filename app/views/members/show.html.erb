@@ -1,64 +1,111 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @member.first_name %>
-</p>
+<section class="sectoin-header">
+  <div class="container">
+    <h1 class="section-header-title">Member Profile</h1>
+    <h2 class="secltion-header-subtitle">Dojo Name</h2>
+  </div>
+</section class="section-content">
+  <div class="container">
+    <div class="row offset-bottom">
+      <div class="col-sm-5">
+        <h4>First name:</h4>
+        <p>
+          <%= @member.first_name %>
+        </p>
+      </div>
+      <div class="col-sm-7">
+        <h4>Last name:</h4>
+        <p>
+          <%= @member.last_name %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Residential Address:</h4>
+        <p>
+          <%= @member.residential_address %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <h4>Code:</h4>
+        <p>
+          <%= @member.code %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5">
+        <h4>Cell Number:</h4>
+        <p>
+          <%= @member.cell_number %>
+        </p>
+      </div>
+      <div class="col-sm-7">
+        <h4>Email:</h4>
+        <p>
+          <%= @member.email %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5">
+        <h4>Current Weight:</h4>
+        <p>
+          <%= @member.current_weight || 'N/A' %>
+        </p>
+      </div>
+      <div class="col-sm-7">
+        <h4>Current Height:</h4>
+        <p>
+          <%= @member.current_height || 'N/A' %>
+        </p>
+      </div>
+    </div>
+    <div class="row divider">
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <h4>Dojo Name:</h4>
+        <p>
+          NAME Of DOJO HERE
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5">
+        <h4>Dojo Cell:</h4>
+        <p>
+          Cell of Dojo HERE
+        </p>
+      </div>
+      <div class="col-sm-7">
+        <h4>Email:</h4>
+        <p>
+          Dojo email here
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-7">
+        <h4>Sensei Name:</h4>
+        <p>
+          Name of Sensei here
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class = "col-sm-7">
+        <h4>Region</h4>
+        <p>
+          Region goes HERE
+        </p>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @member.last_name %>
-</p>
-
-<p>
-  <strong>Date of birth:</strong>
-  <%= @member.date_of_birth %>
-</p>
-
-<p>
-  <strong>Race:</strong>
-  <%= @member.race %>
-</p>
-
-<p>
-  <strong>Residential address:</strong>
-  <%= @member.residential_address %>
-</p>
-
-<p>
-  <strong>Code:</strong>
-  <%= @member.code %>
-</p>
-
-<p>
-  <strong>Cell number:</strong>
-  <%= @member.cell_number %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @member.email %>
-</p>
-
-<p>
-  <strong>Current weight:</strong>
-  <%= @member.current_weight %>
-</p>
-
-<p>
-  <strong>Current height:</strong>
-  <%= @member.current_height %>
-</p>
-
-<p>
-  <strong>Belt:</strong>
-  <%= @member.belt %>
-</p>
-
-<p>
-  <strong>Is affiliated:</strong>
-  <%= @member.is_affiliated %>
-</p>
-
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+</div>
+</section>

@@ -13,4 +13,4 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-//= require brunch/app
+// = require brunch/app

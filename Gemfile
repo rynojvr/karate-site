@@ -23,6 +23,9 @@ gem 'faker'
 # pagination....
 gem 'will_paginate'
 
+gem 'bootstrap-glyphicons'
+
+
 # END CUSTOM GEMS
 
 

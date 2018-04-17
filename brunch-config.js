@@ -11,6 +11,6 @@ module.exports = {
 
   files: {
     javascripts: {joinTo: 'javascripts/brunch/app.js'},
-    stylesheets: {joinTo: 'stylesheets/brunch/app.css'}
+    stylesheets: {joinTo: {'stylesheets/brunch/app.css': /^node_modules/}}
   }
 }

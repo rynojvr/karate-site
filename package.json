@@ -1,5 +1,13 @@
 {
-  "name": "karate_site",
-  "private": true,
-  "dependencies": {}
+  "scripts": {
+    "start": "brunch watch",
+    "build": "brunch build --production"
+  },
+  "dependencies": {
+    "auto-reload-brunch": "2.7.1",
+    "bootstrap-ui": "^3.0.0",
+    "brunch": "2.8.2",
+    "css-brunch": "2.6.1",
+    "javascript-brunch": "2.0.0"
+  }
 }

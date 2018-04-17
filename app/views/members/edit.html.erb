@@ -1,6 +1,8 @@
-<h1>Editing Member</h1>
-
-<%= render 'form', member: @member %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= render 'form', member: @member %>
+  </div>
+</div>
 
 <%= link_to 'Show', @member %> |
 <%= link_to 'Back', members_path %>

@@ -12,4 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-ui/dist/css/bootstrap-ui.min.css
  */
+/*
+ *= require brunch/app
+ */
+
+ a:visited.btn-primary {
+   color: white;
+ }

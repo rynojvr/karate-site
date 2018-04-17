@@ -8,7 +8,24 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
+
+# CUSTOM GEMS ARE HERE
+
+# DBMS For Heroku
 gem 'pg'
+
+# In order to include bootstrap-ui
+gem 'npm-pipeline-rails'
+
+# To make fake names
+gem 'faker'
+
+# pagination....
+gem 'will_paginate'
+
+# END CUSTOM GEMS
+
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -31,6 +48,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

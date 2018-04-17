@@ -22,3 +22,15 @@
 /yarn-error.log
 
 .byebug_history
+
+/node_modules
+/vendor/assets/stylesheets/gulp
+/vendor/assets/javascripts/gulp
+
+/node_modules
+/vendor/assets/stylesheets/webpack
+/vendor/assets/javascripts/webpack
+
+/node_modules
+/vendor/assets/stylesheets/brunch
+/vendor/assets/javascripts/brunch

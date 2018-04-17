@@ -1,10 +1,12 @@
 class MembersController < ApplicationController
+  attr_accessor :labels
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @members = Member.all.paginate(page: params[:page])
+    @lebels =  Hash[@members.collect { |m| [m.id, [{type: 'general', text: 'affiliated'}] ] } ]
   end
 
   # GET /members/1

@@ -14,7 +14,8 @@ class MembersController < ApplicationController
       format.html
       format.pdf do
         render pdf: "#{current_club.name} - #{@member.first_name} #{@member.last_name}",
-               disposition: 'attachment'
+               show_as_html: Rails.env.development? && params.key?('debug'),
+               layout: 'pdf.html'
       end
     end
   end

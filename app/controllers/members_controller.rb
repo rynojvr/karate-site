@@ -1,17 +1,22 @@
 class MembersController < ApplicationController
-  attr_accessor :labels
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all.order(last_name: :asc, first_name: :asc).paginate(page: params[:page])
-    @lebels =  Hash[@members.collect { |m| [m.id, [{type: 'general', text: 'affiliated'}] ] } ]
+    @members = current_club.members.order(last_name: :asc, first_name: :asc).paginate(page: params[:page])
   end
 
   # GET /members/1
   # GET /members/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "#{current_club.name} - #{@member.first_name} #{@member.last_name}",
+               disposition: 'attachment'
+      end
+    end
   end
 
   # GET /members/new
@@ -26,7 +31,7 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(member_params)
+    @member = current_club.members.build(member_params)
 
     respond_to do |format|
       if @member.save

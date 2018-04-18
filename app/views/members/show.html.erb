@@ -1,11 +1,67 @@
-<p id="notice"><%= notice %></p>
-
-<section class="sectoin-header">
+<section class="section-header section-header-condensed">
   <div class="container">
-    <h1 class="section-header-title">Member Profile</h1>
-    <h2 class="secltion-header-subtitle">Dojo Name</h2>
-  </div>
-</section class="section-content">
+
+
+    <div class="row">
+
+      <div class="col-sm-8">
+        <h1 class="section-header-title">
+          <span class="glyphicon glyphicon-inbox offset-right icon-shift-down text-muted" aria-hidden="true"></span>
+          <%= current_club.name %>: Members
+        </h1>
+      </div>
+      <div class="col-sm-4">
+        <%= link_to new_member_path, class: 'btn btn-primary btn-raised cta' do %>
+          <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
+          New Member
+        <% end %>
+      </div>
+
+    </div>
+
+    <nav>
+      <ul class="nav nav-tabs nav-tabs-header">
+        <li class="active">
+          <a href="#">
+            <span class="glyphicon glyphicon-star offset-right" aria-hidden="true"></span>
+            <span class="hidden-xs">New</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div><!-- .container -->
+</section>
+
+<div class="section-content">
+  <div class="container">
+    <p id="notice"><%= notice %></p>
+
+<section class="sectoin-header section-header-condensed">
+  <div class="row">
+    <div class="container">
+      <h1 class="section-header-title">Member Profile</h1>
+      <h2 class="secltion-header-subtitle">Club Name</h2>
+    </div><!-- .container -->
+    <div class="offset-bottom pull-right">
+      <div class="btn-group">
+        <%= link_to member_path(@member, format: :pdf), class: 'btn btn-primary' do %>
+          <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+        <% end %>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="caret"></span>
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Other action</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated Link</a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- .row -->
+</section>
+<section class="section-content">
   <div class="container">
     <div class="row offset-bottom">
       <div class="col-sm-5">
@@ -69,23 +125,23 @@
     </div>
     <div class="row">
       <div class="col-sm-7">
-        <h4>Dojo Name:</h4>
+        <h4>Club Name:</h4>
         <p>
-          NAME Of DOJO HERE
+          NAME Of CLUB HERE
         </p>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-5">
-        <h4>Dojo Cell:</h4>
+        <h4>Club Cell:</h4>
         <p>
-          Cell of Dojo HERE
+          Cell of Club HERE
         </p>
       </div>
       <div class="col-sm-7">
         <h4>Email:</h4>
         <p>
-          Dojo email here
+          Club email here
         </p>
       </div>
     </div>
@@ -109,3 +165,5 @@
 
 </div>
 </section>
+</div>
+</div>

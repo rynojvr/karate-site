@@ -1,5 +1,72 @@
-<div class="table-responsive table-responsive-dropdowns">
-  <table class="table table-hover">
+<section class="section-header section-header-condensed">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-sm-8">
+        <h1 class="section-header-title">
+          <span class="glyphicon glyphicon-inbox offset-right icon-shift-down text-muted" aria-hidden="true"></span>
+          <%= current_club.name %>: Members
+        </h1>
+      </div>
+
+
+    </div><!-- .row -->
+
+    <nav>
+      <ul class="nav nav-tabs nav-tabs-header">
+        <li class="active">
+          <a href="#">
+            <span class="glyphicon glyphicon-star offset-right" aria-hidden="true"></span>
+            <span class="hidden-xs">New</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-ok-sign offset-right" aria-hidden="true"></span>
+            <span class="hidden-xs">Delivered</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="glyphicon glyphicon-remove-sign offset-right" aria-hidden="true"></span>
+            <span class="hidden-xs">Canceled</span>
+          </a>
+        </li> -->
+      </ul>
+    </nav>
+  </div><!-- .container -->
+</section>
+
+<div class="section-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 offset-bottom">
+        <%= link_to new_member_path, class: 'btn btn-warning btn-raised' do %>
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+          New Member
+        <% end %>
+      </div>
+      <div class="offset-bottom pull-right">
+        <div class="btn-group">
+          <%= link_to '#', class: 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+          <% end %>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Other action</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated Link</a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- .row -->
+    <div class="table-responsive table-responsive-dropdowns">
+      <table class="table table-hover">
     <thead>
       <tr>
         <th class="table-cell-id">#</th>
@@ -47,17 +114,16 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="itemOptions<%= index %>">
                 <li>
-                  <button
-                      type="button"
-                      class="btn btn-dropdown"
-                      data-toggle="confirm"
-                      data-confirm-message="Do you really want to remove this member?"
-                      data-confirm-yes="Yes"
-                      data-confirm-no="No"
-                  >
+                  <%= link_to member_path(member), data: {
+                    'toggle' => 'confirm',
+                    'confirm-message' => "Do you really want to remove this member?",
+                    'confirm-yes' => "Yes",
+                    'confirm-no' => "No"
+                  }, method: :delete do %>
+
                     <span class="glyphicon glyphicon-remove-sign offset-right" aria-hidden="true"></span>
                     Remove member
-                  </button>
+                  <% end %>
                 </li>
               </ul>
             </div>
@@ -427,4 +493,6 @@
   </table>
 
   <%= will_paginate @members %>
+</div>
+</div>
 </div>

@@ -12,10 +12,11 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a href="#" class="navbar-brand offset-right-large">
+              <%= link_to members_path, class: 'navbar-brand offset-right-large' do %>
                   <span class="visible-xs visible-md visible-lg">Karate Site</span>
                   <span class="visible-sm" aria-hidden="true">KS - SA</span>
-              </a>
+              <% end %>
+
           </div>
 
           <%= render 'layouts/navbar/collapsible_menu' %>

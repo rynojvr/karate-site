@@ -8,58 +8,10 @@
 <%= render 'layouts/navbar/top' %>
 
 <main role="main" class="site-content">
-  <section class="section-header section-header-condensed">
-    <div class="container">
-
-      <div class="row">
-
-        <div class="col-sm-8">
-          <h1 class="section-header-title">
-            <span class="glyphicon glyphicon-inbox offset-right icon-shift-down text-muted" aria-hidden="true"></span>
-            Members
-          </h1>
-        </div>
-        <div class="col-sm-4">
-          <%= link_to new_member_path, class: 'btn btn-primary btn-raised cta' do %>
-            <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
-            New Member
-          <% end %>
-        </div>
-
-      </div>
-
-      <nav>
-        <ul class="nav nav-tabs nav-tabs-header">
-          <li class="active">
-            <a href="#">
-              <span class="glyphicon glyphicon-star offset-right" aria-hidden="true"></span>
-              <span class="hidden-xs">New</span>
-            </a>
-          </li>
-          <!-- <li>
-            <a href="#">
-              <span class="glyphicon glyphicon-ok-sign offset-right" aria-hidden="true"></span>
-              <span class="hidden-xs">Delivered</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="glyphicon glyphicon-remove-sign offset-right" aria-hidden="true"></span>
-              <span class="hidden-xs">Canceled</span>
-            </a>
-          </li> -->
-        </ul>
-      </nav>
-    </div><!-- .container -->
-  </section>
-
-  <div class="section-content">
-    <div class="container">
+  
 
       <%= yield %>
 
-    </div>
-  </div>
 </main>
 
 <%= render 'layouts/footer' %>

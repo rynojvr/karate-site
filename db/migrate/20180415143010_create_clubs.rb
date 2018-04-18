@@ -1,6 +1,6 @@
-class CreateDojos < ActiveRecord::Migration[5.1]
+class CreateClubs < ActiveRecord::Migration[5.1]
   def change
-    create_table :dojos do |t|
+    create_table :clubs do |t|
       t.string :name
       t.string :cell
       t.string :email

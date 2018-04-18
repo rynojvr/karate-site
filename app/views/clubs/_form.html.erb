@@ -1,10 +1,10 @@
-<%= form_with(model: dojo, local: true) do |form| %>
-  <% if dojo.errors.any? %>
+<%= form_with(model: club, local: true) do |form| %>
+  <% if club.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(dojo.errors.count, "error") %> prohibited this dojo from being saved:</h2>
+      <h2><%= pluralize(club.errors.count, "error") %> prohibited this club from being saved:</h2>
 
       <ul>
-      <% dojo.errors.full_messages.each do |message| %>
+      <% club.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -13,37 +13,37 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :dojo_name %>
+    <%= form.text_field :name, id: :club_name %>
   </div>
 
   <div class="field">
     <%= form.label :cell %>
-    <%= form.text_field :cell, id: :dojo_cell %>
+    <%= form.text_field :cell, id: :club_cell %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :dojo_email %>
+    <%= form.text_field :email, id: :club_email %>
   </div>
 
   <div class="field">
     <%= form.label :sensei %>
-    <%= form.text_field :sensei, id: :dojo_sensei %>
+    <%= form.text_field :sensei, id: :club_sensei %>
   </div>
 
   <div class="field">
     <%= form.label :contact_number %>
-    <%= form.text_field :contact_number, id: :dojo_contact_number %>
+    <%= form.text_field :contact_number, id: :club_contact_number %>
   </div>
 
   <div class="field">
     <%= form.label :cell %>
-    <%= form.text_field :cell, id: :dojo_cell %>
+    <%= form.text_field :cell, id: :club_cell %>
   </div>
 
   <div class="field">
     <%= form.label :landline %>
-    <%= form.text_field :landline, id: :dojo_landline %>
+    <%= form.text_field :landline, id: :club_landline %>
   </div>
 
   <div class="actions">

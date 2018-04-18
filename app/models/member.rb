@@ -1,4 +1,5 @@
 class Member < ApplicationRecord
+  belongs_to :club
   attr_accessor :age
 
   def age

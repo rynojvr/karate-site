@@ -2,27 +2,37 @@
 <div class="collapse navbar-collapse" id="mainMenu">
 
   <ul class="nav navbar-nav">
-    <li class="active">
-      <%= link_to members_path do %>
+    <li class="active dropdown">
+      <%= link_to '#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
         <span class="glyphicon glyphicon-education offset-right" aria-hidden="true"></span>
-        <span class="hidden-sm">Members</span>
+        <span class="hidden-sm">Clubs</span>
       <% end %>
+      <ul class="dropdown-menu">
+        <% all_clubs_helper.each do |club| %>
+          <% if current_club.id == club.id %>
+            <li class="active"><%= link_to club.name, club_path(club) %></li>
+          <% else %>
+            <li><%= link_to club.name, club_path(club) %></li>
+          <% end %>
+        <% end %>
+        <li class="divider"></li>
+        <li>
+          <%= link_to new_club_path do %>
+            <span class="glyphicon glyphicon-plus-sign offset-right icon-shift-down" aria-hidden="true"></span>
+            New Club
+          <% end %>
+        </li>
+      </ul>
     </li>
     <li>
       <a href="#">
-        <span class="glyphicon glyphicon-cup offset-right" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-king offset-right" aria-hidden="true"></span>
         <span class="hidden-sm">Competitions</span>
       </a>
     </li>
   </ul>
 
   <ul class="nav navbar-nav navbar-right">
-    <li class="navbar-icon">
-      <a href="#" target="_blank" title="Open in new tab">
-        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-        <span class="visible-xs">Home</span>
-      </a>
-    </li>
     <li class="navbar-icon">
       <a href="#" title="Settings">
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -48,4 +58,4 @@
     </li><!-- .dropdown -->
   </ul><!-- .nav -->
 
-</div
+</div>

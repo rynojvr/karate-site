@@ -1,2 +1,11 @@
-
+<h1>GAUTENG KARATE FEDERATION</h1>
+<h3>STUDENT AFFILIATION FORM - <%= Time.now.year %></h3>
+<div class="container">
+  <div class="row">
+    <%= wicked_pdf_image_tag('default_member.jpg', size: 140) %>
+    <div class="pull-right">
+      <%= wicked_pdf_image_tag('jkf_logo.png', size: 140) %>
+    </div>
+  </div>
+</div>
 <%= render :partial => 'members/member.html', :object => @member %>

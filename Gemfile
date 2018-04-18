@@ -15,7 +15,7 @@ gem 'rails', '~> 5.1.6'
 gem 'pg'
 
 # In order to include bootstrap-ui
-gem 'npm-pipeline-rails'
+# gem 'npm-pipeline-rails'
 
 # To make fake names
 gem 'faker'

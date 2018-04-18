@@ -38,132 +38,31 @@
 
 <section class="sectoin-header section-header-condensed">
   <div class="row">
-    <div class="container">
+    <div class="container col-sm-8">
       <h1 class="section-header-title">Member Profile</h1>
       <h2 class="secltion-header-subtitle">Club Name</h2>
     </div><!-- .container -->
-    <div class="offset-bottom pull-right">
-      <div class="btn-group">
-        <%= link_to member_path(@member, format: :pdf), class: 'btn btn-primary' do %>
-          <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-        <% end %>
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="caret"></span>
-          <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Other action</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated Link</a></li>
-        </ul>
+    <div class="container col-sm-4">
+      <div class="offset-bottom pull-right">
+        <div class="btn-group">
+          <%= link_to member_path(@member, format: :pdf), class: 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+          <% end %>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Other action</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated Link</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </div><!-- .container -->
   </div><!-- .row -->
 </section>
-<section class="section-content">
-  <div class="container">
-    <div class="row offset-bottom">
-      <div class="col-sm-5">
-        <h4>First name:</h4>
-        <p>
-          <%= @member.first_name %>
-        </p>
-      </div>
-      <div class="col-sm-7">
-        <h4>Last name:</h4>
-        <p>
-          <%= @member.last_name %>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <h4>Residential Address:</h4>
-        <p>
-          <%= @member.residential_address %>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <h4>Code:</h4>
-        <p>
-          <%= @member.code %>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-5">
-        <h4>Cell Number:</h4>
-        <p>
-          <%= @member.cell_number %>
-        </p>
-      </div>
-      <div class="col-sm-7">
-        <h4>Email:</h4>
-        <p>
-          <%= @member.email %>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-5">
-        <h4>Current Weight:</h4>
-        <p>
-          <%= @member.current_weight || 'N/A' %>
-        </p>
-      </div>
-      <div class="col-sm-7">
-        <h4>Current Height:</h4>
-        <p>
-          <%= @member.current_height || 'N/A' %>
-        </p>
-      </div>
-    </div>
-    <div class="row divider">
-    </div>
-    <div class="row">
-      <div class="col-sm-7">
-        <h4>Club Name:</h4>
-        <p>
-          NAME Of CLUB HERE
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-5">
-        <h4>Club Cell:</h4>
-        <p>
-          Cell of Club HERE
-        </p>
-      </div>
-      <div class="col-sm-7">
-        <h4>Email:</h4>
-        <p>
-          Club email here
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-7">
-        <h4>Sensei Name:</h4>
-        <p>
-          Name of Sensei here
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class = "col-sm-7">
-        <h4>Region</h4>
-        <p>
-          Region goes HERE
-        </p>
-      </div>
-    </div>
-  </div>
-
-</div>
-</section>
+<%= render @member %>
 </div>
 </div>

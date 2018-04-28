@@ -1,3 +1,19 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$( ->
+
+  $('.mark-aff-link').on('click', (evt) ->
+    memberRow = evt.target.closest('.member_row')
+    $(memberRow).addClass('submitting')
+  )
+
+  $('.mark-aff-link').on('ajax:complete', (xhr, status) ->
+    console.log 'Complete'
+    console.log status
+    console.log xhr
+
+    memberRow = xhr.target.closest('.member_row')
+    console.log memberRow
+
+    $(memberRow).removeClass('submitting')
+  )
+
+)

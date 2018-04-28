@@ -1,26 +1,32 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="box center-block offset-bottom-large">
+  <h1 class="h4 page-header text-center offset-bottom">Karate Site</h1>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.label :email, class: 'control-label' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.label :password, class: 'control-label'%>
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <% if devise_mapping.rememberable? -%>
+      <hr />
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <%= f.check_box :remember_me %>
+          </span>
+          <%= f.label :remember_me, class: 'form-control' %>
+        </div>
+      </div>
+    <% end -%>
+
+    <div class="form-group">
+      <%= f.submit "Sign in", class: 'btn btn-primary btn-raised btn-block' %>
+    </div>
+  <% end %>
+</div><!--.box .center-block .offset-bottom-lar -->
+
+<!-- <%= render "devise/shared/links" %> -->

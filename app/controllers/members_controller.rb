@@ -1,10 +1,20 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:affiliate, :show, :edit, :update, :destroy]
+
+  # POST /members/1/affiliate
+  def affiliate
+    @member.is_affiliated = !@member.is_affiliated
+    if @member.save
+      render json: { result: 'success' }
+    else
+      render json: { result: 'failure' }
+    end
+  end
 
   # GET /members
   # GET /members.json
   def index
-    @members = current_club.members.order(last_name: :asc, first_name: :asc).paginate(page: params[:page])
+    @members = current_club.members.order(last_name: :asc, first_name: :asc)
   end
 
   # GET /members/1
@@ -72,7 +82,11 @@ class MembersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
-      @member = Member.find(params[:id])
+      member_id = (params[:id] || params[:member_id])
+
+      puts "I Have memberId: #{member_id}"
+
+      @member = Member.find(member_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

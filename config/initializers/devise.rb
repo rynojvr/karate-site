@@ -3,13 +3,25 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+
+  # CUSTOM DEVISE STUFF - TODO: Read this file and understand devise options
+
+  Rails.application.config.to_prepare do
+    Devise::SessionsController.layout 'blank_layout'
+    Devise::RegistrationsController.layout 'blank_layout'
+  end
+
+  # END CUSTOM DEVISE STUFF
+
+
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'ef822a56b608c8212a0bd5bcc1407ea605f67d7233c42d07624a5ffdc7357241c7d72d6f641a7500503542a3145a235a5b2ffa309dcdb3f82f73cbe3d99e98ae'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -251,7 +263,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

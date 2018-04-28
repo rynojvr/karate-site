@@ -88,16 +88,8 @@
               <td class="text-center">
                 <%= member.age %>
               </td>
-              <td class="text-center">
-                <% if member.is_affiliated %>
-                  <span class="label label-success">
-                    Affiliated
-                  </span>
-                <% else %>
-                  <span class="label label-default">
-                    Not Affiliated
-                  </span>
-                <% end %>
+              <td class="text-center affiliation_badge">
+                <%= render 'components/affiliation_badge', is_affiliated: member.is_affiliated %>
               </td>
               <td class="table-cell-actions">
                 <%= link_to edit_member_path(member), class: 'item-action', title: 'Edit' do %>
@@ -131,6 +123,15 @@
 
         </tbody>
       </table>
+
+      <div class="hidden">
+        <div id="affiliated-logo">
+          <%= render 'components/affiliation_badge', is_affiliated: true %>
+        </div>
+        <div id="not-affiliated-logo">
+          <%= render 'components/affiliation_badge', is_affiliated: false %>
+        </div>
+      </div>
 
     </div>
   </div>

@@ -5,9 +5,9 @@ class MembersController < ApplicationController
   def affiliate
     @member.is_affiliated = !@member.is_affiliated
     if @member.save
-      render json: { result: 'success' }
+      render json: { result: 'success', is_affiliated: @member.is_affiliated }
     else
-      render json: { result: 'failure' }
+      render json: { result: 'failure', is_affiliated: @member.is_affiliated }
     end
   end
 

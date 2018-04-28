@@ -1,0 +1,11 @@
+<% is_affiliated = local_assigns.fetch(:is_affiliated) %>
+
+<% if is_affiliated %>
+  <span class="label label-success">
+    Affiliated
+  </span>
+<% else %>
+  <span class="label label-default">
+    Not affiliated
+  </span>
+<% end %>

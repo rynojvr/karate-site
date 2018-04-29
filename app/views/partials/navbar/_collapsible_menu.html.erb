@@ -1,8 +1,8 @@
 <!-- Collapsible menu -->
 <div class="collapse navbar-collapse" id="mainMenu">
 
-  <ul class="nav navbar-nav">
-    <li class="active dropdown">
+  <ul class="nav navbar-nav" data-nav-name="<%= @nav_category %>">
+    <li class="dropdown <%= @nav_category == 'clubs' ? 'active' : '' %>" >
       <%= link_to '#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown' do %>
         <span class="glyphicon glyphicon-education offset-right" aria-hidden="true"></span>
         <span class="hidden-sm">Clubs</span>
@@ -30,7 +30,7 @@
         </li>
       </ul>
     </li>
-    <li>
+    <li class="<%= @nav_category == 'competitions' ? 'active' : '' %>">
       <a href="#">
         <span class="glyphicon glyphicon-king offset-right" aria-hidden="true"></span>
         <span class="hidden-sm">Competitions</span>
@@ -39,13 +39,15 @@
   </ul>
 
   <ul class="nav navbar-nav navbar-right">
-    <li class="navbar-icon">
-      <a href="#" title="Settings">
+    <li class="navbar-icon ">
+      <!-- <a href="#" title="Settings"> -->
+      <%= link_to edit_user_path(current_user), title: 'Settings' do %>
         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
         <span class="visible-xs">Settings</span>
-      </a>
+      <!-- </a> -->
+      <% end %>
     </li>
-    <li class="dropdown">
+    <li class="dropdown <%= @nav_category == 'user_settings' ? 'active' : '' %>">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="My account">
         <span class="glyphicon glyphicon-user offset-right" aria-hidden="true"></span>
         <span class="visible-xs">My account</span>

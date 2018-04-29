@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:affiliate, :show, :edit, :update, :destroy]
+  before_action :set_nav_category
 
   # POST /members/1/affiliate
   def affiliate
@@ -93,4 +94,9 @@ class MembersController < ApplicationController
     def member_params
       params.require(:member).permit(:first_name, :last_name, :date_of_birth, :race, :residential_address, :code, :cell_number, :email, :current_weight, :current_height, :belt, :is_affiliated)
     end
+
+    def set_nav_category
+      @nav_category = 'clubs'
+    end
+    
 end

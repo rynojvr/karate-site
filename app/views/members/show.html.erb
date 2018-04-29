@@ -1,39 +1,12 @@
-<section class="section-header section-header-condensed">
-  <div class="container">
+<%= render 'partials/headline',
+    headline: "#{@club.name}: Members",
+    page_name: 'members',
+    current_tab: '' %>
 
-
-    <div class="row">
-
-      <div class="col-sm-8">
-        <h1 class="section-header-title">
-          <span class="glyphicon glyphicon-inbox offset-right icon-shift-down text-muted" aria-hidden="true"></span>
-          <%= @club.name %>: Members
-        </h1>
-      </div>
-      <div class="col-sm-4">
-        <%= link_to new_club_member_path(@club), class: 'btn btn-primary btn-raised cta' do %>
-          <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
-          New Member
-        <% end %>
-      </div>
-
-    </div>
-
-    <nav>
-      <ul class="nav nav-tabs nav-tabs-header">
-        <li class="active">
-          <a href="#">
-            <span class="glyphicon glyphicon-star offset-right" aria-hidden="true"></span>
-            <span class="hidden-xs">New</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div><!-- .container -->
-</section>
 
 <div class="section-content">
   <div class="container">
+
     <p id="notice"><%= notice %></p>
 
 <section class="sectoin-header section-header-condensed">

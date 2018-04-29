@@ -3,10 +3,10 @@
 <nav>
   <ul class="nav nav-tabs nav-tabs-header">
     <li class="<%= current_tab == 'all' ? 'active' : '' %>">
-      <!-- <%= link_to club_members_path(@club) do %> -->
+      <%= link_to club_members_path(@club) do %>
         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         <span class="hidden-xs">All Members</span>
-      <!-- <% end %> -->
+      <% end %>
     </li>
     <li class="<%= current_tab == 'new' ? 'active' : '' %>">
       <%= link_to new_club_member_path(@club) do %>

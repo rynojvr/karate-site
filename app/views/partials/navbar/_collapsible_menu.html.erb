@@ -15,7 +15,7 @@
         </li>
         <li class="divider"></li>
         <% all_clubs_helper.each do |club| %>
-          <% if @club.id == club.id %>
+          <% if not @club.nil? and @club.id == club.id %>
             <li class="active"><%= link_to club.name, club_path(club) %></li>
           <% else %>
             <li><%= link_to club.name, club_path(club) %></li>

@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:affiliate, :show, :edit, :update, :destroy]
   before_action :set_members, only: [:index]
+  before_action :load_club
 
   before_action :set_nav_category
 
@@ -49,7 +50,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
+        format.html { redirect_to club_member_path @club, @member, notice: 'Member was successfully created.' }
         format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new }
@@ -87,17 +88,22 @@ class MembersController < ApplicationController
     def set_member
       load_club
       member_id = (params[:id] || params[:member_id])
-      @member = Member.find(member_id)
+      @member ||= @club.members.where(id: member_id).first
+
+      # Ensure that the user asked for is in the list for this dojo.
+      if not @member
+        redirect_to club_members_path @club
+      end
     end
 
     def set_members
       load_club
-      @members = @club.members
+      @members ||= @club.members
     end
 
       def load_club
         club_id = params[:club_id]
-        @club = Club.find(club_id)
+        @club ||= Club.find(club_id)
       end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,5 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:affiliate, :show, :edit, :update, :destroy]
+  before_action :set_members, only: [:index]
+
   before_action :set_nav_category
 
   # POST /members/1/affiliate
@@ -15,7 +17,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = current_club.members.order(last_name: :asc, first_name: :asc)
+    # @members = @club.members.order(last_name: :asc, first_name: :asc)
   end
 
   # GET /members/1
@@ -24,7 +26,7 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "#{current_club.name} - #{@member.first_name} #{@member.last_name}",
+        render pdf: "#{@club.name} - #{@member.first_name} #{@member.last_name}",
                show_as_html: Rails.env.development? && params.key?('debug'),
                layout: 'pdf.html'
       end
@@ -33,7 +35,7 @@ class MembersController < ApplicationController
 
   # GET /members/new
   def new
-    @member = Member.new
+    @member = @club.members.new
   end
 
   # GET /members/1/edit
@@ -43,7 +45,7 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = current_club.members.build(member_params)
+    @member = @club.members.build(member_params)
 
     respond_to do |format|
       if @member.save
@@ -83,12 +85,20 @@ class MembersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
+      load_club
       member_id = (params[:id] || params[:member_id])
-
-      puts "I Have memberId: #{member_id}"
-
       @member = Member.find(member_id)
     end
+
+    def set_members
+      load_club
+      @members = @club.members
+    end
+
+      def load_club
+        club_id = params[:club_id]
+        @club = Club.find(club_id)
+      end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
@@ -98,5 +108,5 @@ class MembersController < ApplicationController
     def set_nav_category
       @nav_category = 'clubs'
     end
-    
+
 end

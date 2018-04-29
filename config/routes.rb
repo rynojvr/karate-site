@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   # get '/login', to: 'static_pages#login'
 
   authenticate :user do
-    resources :clubs
-    resources :members do
-      post 'affiliate'
+    resources :clubs do
+      resources :members do
+        post 'affiliate'
+      end
     end
     resources :users
   end

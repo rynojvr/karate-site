@@ -11,7 +11,7 @@ class ClubsController < ApplicationController
   # GET /clubs/1.json
   def show
     session[:club_id] = params[:id]
-    redirect_to members_url
+    redirect_to club_members_url(@club)
   end
 
   # GET /clubs/new

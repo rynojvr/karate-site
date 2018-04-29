@@ -62,7 +62,7 @@ group :development, :test do
 end
 
 group :development, :staging do
-  gem 'rack-mini-profile'
+  gem 'rack-mini-profiler'
   gem 'flamegraph'
   gem 'stackprof'
   gem 'memory_profiler'

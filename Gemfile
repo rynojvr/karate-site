@@ -10,6 +10,7 @@ end
 gem 'rails', '~> 5.1.6'
 
 # CUSTOM GEMS ARE HERE
+gem 'breadcrumbs_on_rails'
 
 # DBMS For Heroku
 gem 'pg'

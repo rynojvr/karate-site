@@ -3,11 +3,19 @@ class Member < ApplicationRecord
   attr_accessor :age
 
   validates :first_name,
-      presence: true
+      presence: true,
+      length: {
+        minimum: 3,
+      }
   validates :last_name,
-      presence: true
+      presence: true,
+      length: {
+        minimum: 3,
+      }
   validates :date_of_birth,
       presence: true
+  validates :email,
+      format: { with: Devise.email_regexp }
 
   def age
     now = Time.now.utc.to_date

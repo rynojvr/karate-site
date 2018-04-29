@@ -5,6 +5,9 @@ class MembersController < ApplicationController
 
   before_action :set_nav_category
 
+  add_breadcrumb 'Club', :club_path
+  add_breadcrumb 'Members', :club_members_path
+
   # POST /members/1/affiliate
   def affiliate
     @member.is_affiliated = !@member.is_affiliated

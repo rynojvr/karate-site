@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     end
 
     def check_rack_mini_profiler
-      if params[:rmp] && Rails.env.staging?
+      if current_user && Rails.env.staging?
         Rack::MiniProfiler.authorize_request
       end
     end

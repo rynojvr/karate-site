@@ -41,11 +41,11 @@
   <ul class="nav navbar-nav navbar-right">
     <li class="navbar-icon ">
       <!-- <a href="#" title="Settings"> -->
-      <%= link_to edit_user_path(current_user), title: 'Settings' do %>
-        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-        <span class="visible-xs">Settings</span>
+      <!-- <%= link_to edit_user_path(current_user), title: 'Settings' do %> -->
+        <!-- <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        <span class="visible-xs">Settings</span> -->
       <!-- </a> -->
-      <% end %>
+      <!-- <% end %> -->
     </li>
     <li class="dropdown <%= @nav_category == 'user_settings' ? 'active' : '' %>">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="My account">
@@ -54,7 +54,11 @@
         <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
       </a>
       <ul class="dropdown-menu">
-        <li class="dropdown-header"><%= current_user.name %></li>
+        <li class="dropdown-header">
+          <%= link_to edit_user_path(current_user), title: 'Settings' do %>
+            <%= current_user.name %>
+          <% end %>
+        </li>
         <li class="divider"></li>
         <li>
           <%= link_to destroy_user_session_path do %>

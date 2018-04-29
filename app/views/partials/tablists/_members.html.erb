@@ -2,9 +2,10 @@
 
 <nav>
   <ul class="nav nav-tabs nav-tabs-header">
+
     <li class="<%= current_tab == 'all' ? 'active' : '' %>">
       <%= link_to club_members_path(@club) do %>
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-user offset-right" aria-hidden="true"></span>
         <span class="hidden-xs">All Members</span>
       <% end %>
     </li>
@@ -12,6 +13,12 @@
       <%= link_to new_club_member_path(@club) do %>
         <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
         <span class="hidden-xs">New Member</span>
+      <% end %>
+    </li>
+    <li class="<%= current_tab == 'settings' ? 'active' : '' %>">
+      <%= link_to edit_club_path(@club) do %>
+        <span class="glyphicon glyphicon-cog offset-right" aria-hidden="true"></span>
+        <span class="hidden-xs">Settings</span>
       <% end %>
     </li>
 

@@ -35,4 +35,7 @@ Rails.application.configure do
   end
 
   config.active_record.dump_schema_after_migration = false
+
+  # For rack-mini-profiler
+  config.force_ssl = false
 end

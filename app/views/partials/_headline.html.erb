@@ -1,0 +1,23 @@
+<% page_name = local_assigns.fetch(:page_name) %>
+<% current_tab = local_assigns.fetch(:current_tab) %>
+<% headline = local_assigns.fetch(:headline) %>
+
+<section class="section-header section-header-condensed">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-sm-8">
+        <h1 class="section-header-title">
+          <span class="glyphicon glyphicon-inbox offset-right icon-shift-down text-muted" aria-hidden="true"></span>
+          <%= headline %>
+        </h1>
+      </div>
+
+
+    </div><!-- .row -->
+
+    <%= render "partials/tablists/#{page_name}", current_tab: current_tab %>
+
+  </div><!-- .container -->
+</section>

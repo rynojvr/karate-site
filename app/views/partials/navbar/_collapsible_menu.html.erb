@@ -8,6 +8,12 @@
         <span class="hidden-sm">Clubs</span>
       <% end %>
       <ul class="dropdown-menu">
+        <li>
+          <%= link_to '#' do %>
+            All Clubs
+          <% end %>
+        </li>
+        <li class="divider"></li>
         <% all_clubs_helper.each do |club| %>
           <% if current_club.id == club.id %>
             <li class="active"><%= link_to club.name, club_path(club) %></li>

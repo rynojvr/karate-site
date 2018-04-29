@@ -1,5 +1,15 @@
-<h1>New Member</h1>
+<%= render 'partials/headline',
+    headline: "#{current_club.name}: Members",
+    page_name: 'members',
+    current_tab: 'new' %>
 
-<%= render 'form', member: @member %>
 
-<%= link_to 'Back', members_path %>
+
+<div class="secion-content">
+  <div class="container">
+
+    <h1>New Member</h1>
+
+    <%= render 'form', member: @member %>
+  </div>
+</div>

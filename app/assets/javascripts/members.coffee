@@ -15,10 +15,8 @@ $(() ->
   $('.mark-aff-link').on('ajax:complete', (xhr) ->
     origXhr = xhr.originalEvent.detail[0]
     status = xhr.originalEvent.detail[1]
-    # setTimeout(() ->
     row = $(xhr.target.closest('.member_row'))
     enableRow(row, xhr)
-    # , submission_disable_timeout)
   )
 
   $('.mark-aff-link').on('ajax:success', (evt) ->
@@ -35,6 +33,23 @@ $(() ->
 
   )
 
+  $('#search-input').on('keyup', (evt) ->
+    input = evt.target
+    filter = input.value.toUpperCase()
+    table = $('table')
+    tr = table.find('tr.member_row')
+
+    for row in tr
+      row = $(row)
+      do ->
+        td = $(row.find('td.search-name'))
+        if td
+          if td.text().toUpperCase().indexOf(filter) > -1
+            row.removeClass('hidden')
+          else
+            row.addClass('hidden')
+  )
+
   disableRow = (memberRow, evt) ->
     memberRow.addClass('submitting')
     memberRow.find('.item-action').addClass('disabled')
@@ -46,4 +61,5 @@ $(() ->
       memberRow.removeClass('submitting')
       memberRow.removeClass('submitting-completed')
     , 200)
+
 )

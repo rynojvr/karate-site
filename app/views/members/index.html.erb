@@ -16,10 +16,16 @@
     <nav>
       <ul class="nav nav-tabs nav-tabs-header">
         <li class="active">
-          <a href="#">
-            <span class="glyphicon glyphicon-star offset-right" aria-hidden="true"></span>
-            <span class="hidden-xs">New</span>
+          <a href='#'>
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            <span class="hidden-xs">All Members</span>
           </a>
+        </li>
+        <li>
+          <%= link_to new_member_path do %>
+            <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
+            <span class="hidden-xs">New Member</span>
+          <% end %>
         </li>
 
       </ul>
@@ -30,11 +36,24 @@
 <div class="section-content">
   <div class="container">
     <div class="row">
-      <div class="col-xs-4 offset-bottom">
-        <%= link_to new_member_path, class: 'btn btn-warning btn-raised' do %>
+      <div class="col-xs-7 offset-bottom">
+        <!-- <%= link_to new_member_path, class: 'btn btn-warning btn-raised' do %>
           <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
           New Member
-        <% end %>
+        <% end %> -->
+        <div class="input-group has-feedback has-feedback-right">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Name
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href='#'>Belt</a></li>
+              <li><a href='#'>Affiliated</a></li>
+            </ul>
+          </div><!-- .btn-group -->
+          <input type="text" class="form-control" aria-label="search" id="search-input"/>
+          <i class="form-control-feedback glyphicon glyphicon-search"></i>
+        </div><!-- .input-group -->
       </div>
       <div class="col-xs-4 offset-bottom pull-right orrset-right">
         <div class="btn-group pull-right">
@@ -60,11 +79,11 @@
           <tr>
             <th class="table-cell-id">#</th>
             <!-- <th data-toggle="sort" data-sort-onload="asc" class="col-sm-3" tabindex="0">Date</th> -->
-            <th data-toggle="sort" class="col-sm-3" tabindex="0">Name</th>
-            <th data-toggle="sort" class="col-sm-2" tabindex="0">Belt</th>
+            <th class="col-sm-3" tabindex="0">Name</th>
+            <th class="col-sm-2" tabindex="0">Belt</th>
             <!-- <th data-toggle="sort" class="col-sm-3 text-right" tabindex="0">Race</th> -->
-            <th data-toggle="sort" class="col-sm-2 text-center">Age</th>
-            <th data-toggle="sort" class="col-sm-3 text-center" tabindex="0">Affiliation</th>
+            <th class="col-sm-2 text-center">Age</th>
+            <th class="col-sm-3 text-center" tabindex="0">Affiliation</th>
             <th></th>
           </tr>
         </thead>
@@ -74,21 +93,21 @@
               <td class="table-cell-id">
                 <%= member.id %>
               </td>
-              <td>
+              <td class="search-name">
                 <%= link_to member_path(member), class: 'text-nowrap' do %>
                   <%= member.first_name %>
                   <%= member.last_name %>
                 <% end %>
               </td>
-              <td>
+              <td class="search-belt">
                 <div class="small text-nowrap">
                   <%= member.belt %>
                 </div>
               </td>
-              <td class="text-center">
+              <td class="text-center search-age">
                 <%= member.age %>
               </td>
-              <td class="text-center affiliation_badge">
+              <td class="text-center affiliation_badge search-affiliated">
                 <%= render 'components/affiliation_badge', is_affiliated: member.is_affiliated %>
               </td>
               <td class="table-cell-actions">

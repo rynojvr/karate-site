@@ -12,22 +12,33 @@
       <div class="sidebar">
         <div class="list-group list-group-nested">
 
-          <button class="list-group-item active" data-toggle="collapse" data-target="#demo">
-            <h4 class="list-group-item-heading">Pages</h4>
+          <%= link_to clubs_path, class: "list-group-item  #{ @current_district.nil? ? 'active' : '' }" do %>
+            <h4 class="list-group-item-heading">All Clubs</h4>
+          <% end %>
+
+          <button class="list-group-item" data-toggle="collapse" data-target="#demo">
+            <h4 class="list-group-item-heading ">Filter By District</h4>
           </button>
 
-          <div id="demo" class="collapse">
-            <a href="#" class="list-group-item list-group-item-nested">Home</a>
+          <div id="demo" class="collapse in">
+            <% current_province.districts.each do |district| %>
+              <%= link_to district_club_path(district), class: "list-group-item list-group-item-nested #{ (!@current_district.nil? && @current_district.id == district.id) ? 'active' : '' }" do %>
+                <%= district.name %>
+              <% end %>
+              <!-- <a href="#" class="list-group-item active list-group-item-nested">Home</a> -->
+
+            <% end %>
+            <!-- <a href="#" class="list-group-item active list-group-item-nested">Home</a>
             <a href="#" class="list-group-item list-group-item-nested">Products</a>
-            <a href="#" class="list-group-item list-group-item-nested">About</a>
+            <a href="#" class="list-group-item list-group-item-nested">About</a> -->
           </div>
-          <a href="#" class="list-group-item">
+          <!-- <a href="#" class="list-group-item">
             <h4 class="list-group-item-heading">Articles</h4>
           </a>
 
           <a href="#" class="list-group-item">
             <h4 class="list-group-item-heading">Settings</h4>
-          </a>
+          </a> -->
 
         </div>
       </div>
@@ -51,7 +62,14 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th class="col-sm-8" tabindex="0"><%= district.name %></th>
+                      <th class="col-sm-" tabindex="0"><%= district.name %></th>
+                      <!-- <th>Cell</th>
+                      <th>Email</th>
+                      <th>Sensei</th>
+                      <th>Contact number</th>
+                      <th>Cell</th>
+                      <th>Landline</th>
+                      <th colspan="3"></th> -->
                       <th></th> <!-- For the edit button -->
                     </tr>
                   </thead>
@@ -93,6 +111,8 @@
           </div>
 
         </div><!-- .row -->
+
+        <br>
 
       </div>
     </div>

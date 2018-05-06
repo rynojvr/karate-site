@@ -19,12 +19,12 @@ Rails.application.routes.draw do
   # get '/login', to: 'static_pages#login'
 
   authenticate :user do
+    get 'clubs/district/:district_slug', to: 'clubs#by_district', constrainsts: { district_slug: /[a-z][a-z\-]*[a-z]/ }, as: :district_club
+
     resources :clubs do
       resources :members do
         post 'affiliate'
       end
-
-
     end
     resources :users
     resources :provinces, param: :slug, constraints: { slug: /[a-z][a-z\-]*[a-z]/ }

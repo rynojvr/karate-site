@@ -6,10 +6,24 @@ class ClubsController < ApplicationController
   def index
     # @clubs = Club.all
     @districts = current_province.districts.order(:name)
+
     @districts_by_letter = Hash.new { |h,k| h[k] = [] }
     @districts.each do |d|
       @districts_by_letter[d.name[0].downcase] << d
     end
+  end
+
+  def by_district
+    @current_district = District.find_by(slug: params[:district_slug])
+    @districts = [@current_district]
+    if @districts.nil?
+      return redirect_to clubs_path
+    end
+
+    @districts_by_letter = Hash.new { |h,k| h[k] = [] }
+    @districts_by_letter[@current_district.name[0].downcase] << @current_district
+
+    render 'index'
   end
 
   # GET /clubs/1

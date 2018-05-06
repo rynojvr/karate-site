@@ -4,7 +4,12 @@ class ClubsController < ApplicationController
   # GET /clubs
   # GET /clubs.json
   def index
-    @districts = District.all
+    # @clubs = Club.all
+    @districts = District.all.order(:name)
+    @districts_by_letter = Hash.new { |h,k| h[k] = [] }
+    @districts.each do |d|
+      @districts_by_letter[d.name[0]] << d
+    end
   end
 
   # GET /clubs/1

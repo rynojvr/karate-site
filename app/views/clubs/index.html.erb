@@ -37,122 +37,36 @@
 
           <div class="col-sm-2 col-sm-push-10">
             <ul class="nav nav-letters">
-              <% @districts.each do |district| %>
-                <li><a href="#letter-a">A</a></li>
-                <li><a href="#letter-b">B</a></li>
-                <li><a href="#letter-c">C</a></li>
+              <% @districts_by_letter.keys.each do |letter| %>
+                <li><a href="#<%= letter %>"><%= letter.upcase %></a></li>
               <% end %>
             </ul>
           </div>
           <div class="col-sm-10 col-sm-pull-2">
-            <h3 id="letter-a">A</h3>
-            <div class="table-responsive table-responsive-dropdowns">
+            <%= @districts_by_letter.keys.each do |letter| %>
+              <h3 id="<%= letter %>"><%= letter %></h3>
+              <div class="table-responsive table-responsive-dropdowns">
 
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th class="col-sm-3" tabindex="0">Name</th>
-                    <!-- <th>Cell</th>
-                    <th>Email</th>
-                    <th>Sensei</th>
-                    <th>Contact number</th>
-                    <th>Cell</th>
-                    <th>Landline</th>
-                    <th colspan="3"></th> -->
-                  </tr>
-                </thead>
+                <% @districts_by_letter[letter].each do |district| %>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th class="col-sm-3" tabindex="0"><%= district.name %></th>
+                      </tr>
+                    </thead>
 
-                <tbody>
-                  <% @clubs.each do |club| %>
-                    <tr>
-                      <td><%= club.name %></td>
-                      <!-- <td><%= club.cell %></td>
-                      <td><%= club.email %></td>
-                      <td><%= club.sensei %></td>
-                      <td><%= club.contact_number %></td>
-                      <td><%= club.cell %></td>
-                      <td><%= club.landline %></td>
-                      <td><%= link_to 'Show', club %></td>
-                      <td><%= link_to 'Edit', edit_club_path(club) %></td>
-                      <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
+                    <tbody>
+                      <% district.clubs.each do |club| %>
+                        <tr>
+                          <td><%= club.name %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
 
-            </div>
-            <h3 id="letter-b">B</h3>
-            <div class="table-responsive table-responsive-dropdowns">
-
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th class="col-sm-3" tabindex="0">Name</th>
-                    <!-- <th>Cell</th>
-                    <th>Email</th>
-                    <th>Sensei</th>
-                    <th>Contact number</th>
-                    <th>Cell</th>
-                    <th>Landline</th>
-                    <th colspan="3"></th> -->
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <% @clubs.each do |club| %>
-                    <tr>
-                      <td><%= club.name %></td>
-                      <!-- <td><%= club.cell %></td>
-                      <td><%= club.email %></td>
-                      <td><%= club.sensei %></td>
-                      <td><%= club.contact_number %></td>
-                      <td><%= club.cell %></td>
-                      <td><%= club.landline %></td>
-                      <td><%= link_to 'Show', club %></td>
-                      <td><%= link_to 'Edit', edit_club_path(club) %></td>
-                      <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-
-            </div>
-            <h3 id="letter-c">C</h3>
-            <div class="table-responsive table-responsive-dropdowns">
-
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th class="col-sm-3" tabindex="0">Name</th>
-                    <!-- <th>Cell</th>
-                    <th>Email</th>
-                    <th>Sensei</th>
-                    <th>Contact number</th>
-                    <th>Cell</th>
-                    <th>Landline</th>
-                    <th colspan="3"></th> -->
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <% @clubs.each do |club| %>
-                    <tr>
-                      <td><%= club.name %></td>
-                      <!-- <td><%= club.cell %></td>
-                      <td><%= club.email %></td>
-                      <td><%= club.sensei %></td>
-                      <td><%= club.contact_number %></td>
-                      <td><%= club.cell %></td>
-                      <td><%= club.landline %></td>
-                      <td><%= link_to 'Show', club %></td>
-                      <td><%= link_to 'Edit', edit_club_path(club) %></td>
-                      <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-
-            </div>
+                <% end %>
+              </div>
+            <% end %>
           </div>
 
         </div><!-- .row -->

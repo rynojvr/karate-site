@@ -147,7 +147,7 @@ provinces = [{
 provinces.each do |prov_data|
   prov = Province.find_or_create_by(name: prov_data[:name])
   prov_data[:districts].each do |district_data|
-    prov.districts.find_or_create_by(district_data)
+    dist = prov.districts.find_or_create_by(district_data)
   end
 end
 

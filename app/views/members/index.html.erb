@@ -47,7 +47,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th class="table-cell-id">#</th>
+            <!-- <th class="table-cell-id">#</th> -->
             <!-- <th data-toggle="sort" data-sort-onload="asc" class="col-sm-3" tabindex="0">Date</th> -->
             <th class="col-sm-3" tabindex="0">Name</th>
             <th class="col-sm-2" tabindex="0">Belt</th>
@@ -60,9 +60,9 @@
         <tbody>
           <% @members.each_with_index do |member, index| %>
             <tr class="member_row">
-              <td class="table-cell-id">
+              <!-- <td class="table-cell-id">
                 <%= member.id %>
-              </td>
+              </td> -->
               <td class="search-name">
                 <%= link_to club_member_path(@club, member), class: 'text-nowrap' do %>
                   <%= member.first_name %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180429130634) do
+ActiveRecord::Schema.define(version: 20180506120018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20180429130634) do
     t.string "landline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "district_id"
+    t.index ["district_id"], name: "index_clubs_on_district_id"
   end
 
   create_table "districts", force: :cascade do |t|
@@ -31,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180429130634) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "province_id"
+    t.string "slug"
     t.index ["province_id"], name: "index_districts_on_province_id"
   end
 
@@ -77,6 +80,7 @@ ActiveRecord::Schema.define(version: 20180429130634) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clubs", "districts"
   add_foreign_key "districts", "provinces"
   add_foreign_key "members", "clubs"
 end

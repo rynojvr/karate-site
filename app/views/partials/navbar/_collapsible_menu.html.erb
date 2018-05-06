@@ -14,7 +14,7 @@
           <% end %>
         </li>
         <li class="divider"></li>
-        <% all_clubs_helper.each do |club| %>
+        <% current_province.clubs.each do |club| %>
           <% if not @club.nil? and @club.id == club.id %>
             <li class="active"><%= link_to club.name, club_path(club) %></li>
           <% else %>
@@ -39,13 +39,20 @@
   </ul>
 
   <ul class="nav navbar-nav navbar-right">
-    <li class="navbar-icon ">
-      <!-- <a href="#" title="Settings"> -->
-      <!-- <%= link_to edit_user_path(current_user), title: 'Settings' do %> -->
-        <!-- <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-        <span class="visible-xs">Settings</span> -->
-      <!-- </a> -->
-      <!-- <% end %> -->
+
+    <li class="dropdown active">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Select Province">
+        <%= current_province.name %>
+      </a>
+      <ul class="dropdown-menu">
+        <% all_provinces.each do |province| %>
+          <li class="dropdown-header <%= (province.id == current_province.id) ? 'active' : '' %>">
+            <%= link_to province_url(province) do%>
+              <%= province.name %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </li>
     <li class="dropdown <%= @nav_category == 'user_settings' ? 'active' : '' %>">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="My account">

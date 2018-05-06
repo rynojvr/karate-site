@@ -23,8 +23,11 @@ Rails.application.routes.draw do
       resources :members do
         post 'affiliate'
       end
+
+
     end
     resources :users
+    resources :provinces, param: :slug, constraints: { slug: /[a-z][a-z\-]*[a-z]/ }
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

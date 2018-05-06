@@ -1,5 +1,5 @@
 <%= render 'partials/headline',
-    headline: 'All Clubs',
+    headline: "All Clubs > #{current_province.name}",
     page_name: 'clubs',
     current_tab: '' %>
 
@@ -44,36 +44,56 @@
           </div>
           <div class="col-sm-10 col-sm-pull-2">
             <%= @districts_by_letter.keys.each do |letter| %>
-              <h3 id="<%= letter %>"><%= letter %></h3>
-              <div class="table-responsive table-responsive-dropdowns">
+            <h3 id="<%= letter %>"><%= letter.upcase %></h3>
+            <div class="table-responsive table-responsive-dropdowns">
 
-                <% @districts_by_letter[letter].each do |district| %>
-                  <table class="table table-hover">
-                    <thead>
+              <% @districts_by_letter[letter].each do |district| %>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th class="col-sm-8" tabindex="0"><%= district.name %></th>
+                      <th></th> <!-- For the edit button -->
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <% district.clubs.each do |club| %>
                       <tr>
-                        <th class="col-sm-3" tabindex="0"><%= district.name %></th>
+                        <td>
+                          <%= link_to club_path(club) do %>
+                            <%= club.name %>
+                          <% end %>
+                        </td>
+                        <!-- <td><%= club.cell %></td>
+                        <td><%= club.email %></td>
+                        <td><%= club.sensei %></td>
+                        <td><%= club.contact_number %></td>
+                        <td><%= club.cell %></td>
+                        <td><%= club.landline %></td>
+                        <td><%= link_to 'Show', club %></td>
+                        <td><%= link_to 'Edit', edit_club_path(club) %></td>
+                        <td><%= link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+                        <td class="table-cell-actions">
+                          <%= link_to edit_club_path(club), class: 'item-action', title: 'Edit Club' do %>
+                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                          <% end %>
+                        </td>
                       </tr>
-                    </thead>
+                    <% end %>
+                  </tbody>
+                </table>
+              <% end %>
+            </div>
 
-                    <tbody>
-                      <% district.clubs.each do |club| %>
-                        <tr>
-                          <td><%= club.name %></td>
-                        </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
+                  <% end %>
+                </tbody>
+              </table>
 
-                <% end %>
-              </div>
-            <% end %>
+            </div>
           </div>
 
         </div><!-- .row -->
 
-        <br>
-
-        <%= link_to 'New Dojo', new_club_path %>
       </div>
     </div>
   </div>

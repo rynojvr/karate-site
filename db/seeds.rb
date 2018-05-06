@@ -2,7 +2,8 @@
 puts "[+] Creating Provinces..."
 # Info pulled from https://www.wikiwand.com/en/Districts_of_South_Africa
 provinces = [{
-    name: 'Eastern Cape',
+  name: 'Eastern Cape',
+  slug: 'eastern-cape',
     districts: [{
         name: 'Alfred Nzo District Municipality',
         slug: 'alfred-nzo'
@@ -31,6 +32,7 @@ provinces = [{
     ]
   }, {
     name: 'Free State',
+    slug: 'free-state',
     districts: [{
         name: 'Felize Dabi District Municipality',
         slug: 'felize-dabi'
@@ -50,6 +52,7 @@ provinces = [{
     ]
   }, {
     name: 'Gauteng',
+    slug: 'gauteng',
     districts: [{
         name: 'City of Johannesburg Metropolitan Municipality',
         slug: 'johannesburg'
@@ -69,6 +72,7 @@ provinces = [{
     ]
   }, {
     name: 'KwaZulu-Natal',
+    slug: 'kwazulu-natal',
     districts: [{
         name: 'Amajuba District Municipality',
         slug: 'amajuba'
@@ -106,6 +110,7 @@ provinces = [{
     ]
   }, {
     name: 'Limpopo',
+    slug: 'limpopo',
     districts: [{
         name: 'Capricorn District Municipality',
         slug: 'capricorn'
@@ -125,6 +130,7 @@ provinces = [{
     ]
   }, {
     name: 'Mpumalanga',
+    slug: 'mpumalanga',
     districts: [{
         name: 'Ehlanzeni District Municipality',
         slug: 'ehlenzeni'
@@ -138,6 +144,7 @@ provinces = [{
     ]
   }, {
     name: 'North West',
+    slug: 'north-west',
     districts: [{
         name: 'Bojanala Platinum District Municipality',
         slug: 'bojanala-platinum'
@@ -154,6 +161,7 @@ provinces = [{
     ]
   }, {
     name: 'Northern Cape',
+    slug: 'northern-cape',
     districts: [{
         name: 'Frances Baard District Municipality',
         slug: 'frances-baard'
@@ -173,6 +181,7 @@ provinces = [{
     ]
   }, {
     name: 'Western Cape',
+    slug: 'western-cape',
     districts: [{
         name: 'Cape Winelands District Municipality',
         slug: 'cape-winelands'
@@ -198,7 +207,10 @@ provinces = [{
 
 provinces.each do |prov_data|
   # Create Provinces
-  prov = Province.find_or_create_by(name: prov_data[:name])
+  prov = Province.find_or_create_by(
+    name: prov_data[:name],
+    slug: prov_data[:slug]
+  )
   prov_data[:districts].each do |district_data|
     # Create Districts
     dist = prov.districts.find_or_create_by(district_data)

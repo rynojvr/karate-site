@@ -104,10 +104,10 @@ class MembersController < ApplicationController
       @members ||= @club.members
     end
 
-      def load_club
-        club_id = params[:club_id]
-        @club ||= Club.find(club_id)
-      end
+    def load_club
+      club_id = params[:club_id]
+      @club ||= Club.find(club_id)
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params

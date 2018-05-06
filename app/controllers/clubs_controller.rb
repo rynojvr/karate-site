@@ -5,10 +5,10 @@ class ClubsController < ApplicationController
   # GET /clubs.json
   def index
     # @clubs = Club.all
-    @districts = District.all.order(:name)
+    @districts = current_province.districts.order(:name)
     @districts_by_letter = Hash.new { |h,k| h[k] = [] }
     @districts.each do |d|
-      @districts_by_letter[d.name[0]] << d
+      @districts_by_letter[d.name[0].downcase] << d
     end
   end
 

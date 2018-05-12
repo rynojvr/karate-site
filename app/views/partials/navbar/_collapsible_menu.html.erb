@@ -29,7 +29,7 @@
           <% end %>
         </li>
         <li class="divider"></li>
-        <% current_province.clubs.each do |club| %>
+        <% current_province.clubs.sort {|a,b| a.name <=> b.name }.each do |club| %>
           <% if not @club.nil? and @club.id == club.id %>
             <li class="active"><%= link_to club.name, club_path(club) %></li>
           <% else %>

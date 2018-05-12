@@ -1,0 +1,14 @@
+<% current_tab = local_assigns.fetch(:current_tab) %>
+
+<nav>
+  <ul class="nav nav-tabs nav-tabs-header">
+
+    <li class="<%= current_tab == 'new' ? 'active' : '' %>">
+      <%= link_to new_club_path do %>
+        <span class="glyphicon glyphicon-plus-sign offset-right" aria-hidden="true"></span>
+        <span class="hidden-xs">New Club</span>
+      <% end %>
+    </li>
+
+  </ul>
+</nav>

@@ -13,6 +13,14 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/* CUSTOM VARS FOR COLORS IN DIFFERNT ENVS */
+<% if Rails.env.production? %>
+  $color-primary: #00778b;
+<% else %>
+  $color-primary: #8a6d3b;
+<% end %>
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1093,7 +1101,7 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #00778b;
+  color: $color-primary;
   text-decoration: none;
 }
 a:hover,
@@ -1342,7 +1350,7 @@ mark,
   color: #777777;
 }
 .text-primary {
-  color: #00778b;
+  color: $color-primary;
 }
 a.text-primary:hover,
 a.text-primary:focus {
@@ -1378,7 +1386,7 @@ a.text-danger:focus {
 }
 .bg-primary {
   color: #fff;
-  background-color: #00778b;
+  background-color: $color-primary;
 }
 a.bg-primary:hover,
 a.bg-primary:focus {
@@ -3121,7 +3129,7 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #00778b;
+  background-color: $color-primary;
   border-color: #006172;
 }
 .btn-primary:focus,
@@ -3169,11 +3177,11 @@ fieldset[disabled] .btn-primary:focus,
 .btn-primary.disabled.focus,
 .btn-primary[disabled].focus,
 fieldset[disabled] .btn-primary.focus {
-  background-color: #00778b;
+  background-color: $color-primary;
   border-color: #006172;
 }
 .btn-primary .badge {
-  color: #00778b;
+  color: $color-primary;
   background-color: #fff;
 }
 .btn-success {
@@ -3405,7 +3413,7 @@ fieldset[disabled] .btn-danger.focus {
   background-color: #fff;
 }
 .btn-link {
-  color: #00778b;
+  color: $color-primary;
   font-weight: normal;
   border-radius: 0;
 }
@@ -3570,7 +3578,7 @@ tbody.collapse.in {
   color: #fff;
   text-decoration: none;
   outline: 0;
-  background-color: #00778b;
+  background-color: $color-primary;
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -4078,7 +4086,7 @@ select[multiple].input-group-sm > .input-group-btn > .item-action {
 .sortable-table-nav ul .open > a:hover,
 .sortable-table-nav ul .open > a:focus {
   background-color: #eeeeee;
-  border-color: #00778b;
+  border-color: $color-primary;
 }
 .nav .nav-divider,
 .sortable-table-nav ul .nav-divider {
@@ -4173,7 +4181,7 @@ select[multiple].input-group-sm > .input-group-btn > .item-action {
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
   color: #fff;
-  background-color: #00778b;
+  background-color: $color-primary;
 }
 .nav-stacked > li {
   float: none;
@@ -4796,7 +4804,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 8px 16px;
   line-height: 1.5;
   text-decoration: none;
-  color: #00778b;
+  color: $color-primary;
   background-color: #fff;
   border: 1px solid #ddd;
   margin-left: -1px;
@@ -4829,8 +4837,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .active > span:focus {
   z-index: 3;
   color: #fff;
-  background-color: #00778b;
-  border-color: #00778b;
+  background-color: $color-primary;
+  border-color: $color-primary;
   cursor: default;
 }
 .pagination > .disabled > span,
@@ -4948,7 +4956,7 @@ a.label:focus {
   background-color: #5e5e5e;
 }
 .label-primary {
-  background-color: #00778b;
+  background-color: $color-primary;
 }
 .label-primary[href]:hover,
 .label-primary[href]:focus {
@@ -5018,7 +5026,7 @@ a.badge:focus {
 }
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
-  color: #00778b;
+  color: $color-primary;
   background-color: #fff;
 }
 .list-group-item > .badge {
@@ -5091,7 +5099,7 @@ a.badge:focus {
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
-  border-color: #00778b;
+  border-color: $color-primary;
 }
 .thumbnail .caption {
   padding: 9px;
@@ -5199,7 +5207,7 @@ a.thumbnail.active {
   line-height: 24px;
   color: #fff;
   text-align: center;
-  background-color: #00778b;
+  background-color: $color-primary;
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   transition: width 0.6s ease;
 }
@@ -5347,8 +5355,8 @@ button.list-group-item {
 .list-group-item.active:focus {
   z-index: 2;
   color: #fff;
-  background-color: #00778b;
-  border-color: #00778b;
+  background-color: $color-primary;
+  border-color: $color-primary;
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active:hover .list-group-item-heading,
@@ -5743,22 +5751,22 @@ button.list-group-item-danger.active:focus {
   border-bottom-color: #ddd;
 }
 .panel-primary {
-  border-color: #00778b;
+  border-color: $color-primary;
 }
 .panel-primary > .panel-heading {
   color: #fff;
-  background-color: #00778b;
-  border-color: #00778b;
+  background-color: $color-primary;
+  border-color: $color-primary;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #00778b;
+  border-top-color: $color-primary;
 }
 .panel-primary > .panel-heading .badge {
-  color: #00778b;
+  color: $color-primary;
   background-color: #fff;
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #00778b;
+  border-bottom-color: $color-primary;
 }
 .panel-success {
   border-color: #d6e9c6;
@@ -7089,7 +7097,7 @@ Version: @@ver@@ Timestamp: @@timestamp@@
   display: inline-block;
   border: solid transparent;
   border-width: 0 0 7px 7px;
-  border-bottom-color: #00778b;
+  border-bottom-color: $color-primary;
   border-top-color: rgba(0, 0, 0, 0.2);
   position: absolute;
   bottom: 4px;
@@ -7097,7 +7105,7 @@ Version: @@ver@@ Timestamp: @@timestamp@@
 }
 .bootstrap-datetimepicker-widget table td.active,
 .bootstrap-datetimepicker-widget table td.active:hover {
-  background-color: #00778b;
+  background-color: $color-primary;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -7123,7 +7131,7 @@ Version: @@ver@@ Timestamp: @@timestamp@@
   background: #eeeeee;
 }
 .bootstrap-datetimepicker-widget table td span.active {
-  background-color: #00778b;
+  background-color: $color-primary;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -7952,7 +7960,7 @@ Styleguide 2.5
   }
 }
 .section-primary {
-  background-color: #00778b;
+  background-color: $color-primary;
 }
 .section-primary,
 .section-primary h1,
@@ -8175,7 +8183,7 @@ Styleguide 3.4
   float: right;
   padding: 10px 15px;
   line-height: 17px;
-  color: #00778b;
+  color: $color-primary;
 }
 .list-group-add:hover,
 .list-group-add:focus {
@@ -8334,7 +8342,7 @@ Styleguide 3.6
   padding-top: 50px;
 }
 .navbar-primary {
-  background-color: #00778b;
+  background-color: $color-primary;
   border-color: #004b58;
 }
 .navbar-primary .navbar-brand {
@@ -8475,7 +8483,7 @@ Styleguide 3.7.2
 }
 .nav-tabs-header > li > a:hover,
 .nav-tabs-header > li > a:focus {
-  color: #00778b;
+  color: $color-primary;
 }
 .section-header > .container .nav-tabs-header,
 .section-header > .container-fluid .nav-tabs-header {
@@ -8587,7 +8595,7 @@ Styleguide 3.7.4
 .nav-tabs-transparent > li.active > a:focus {
   color: #fff;
   border-color: #fff;
-  border-bottom-color: #00778b;
+  border-bottom-color: $color-primary;
   background-color: transparent;
 }
 .nav-tabs-transparent.nav-tabs-header > li.active > a,

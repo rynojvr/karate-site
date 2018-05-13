@@ -2,6 +2,18 @@ $(() ->
 
   yesBadge = $('#affiliated-logo > span')
   notBadge = $('#not-affiliated-logo > span')
+  searchFields = [ {
+      displayName: 'Name',
+      fieldName: 'name'
+    }, {
+      displayName: 'Belt',
+      fieldName: 'belt'
+    },
+    # {
+      # displayName: 'Affiliated',
+      # fieldName: 'affiliated'
+    # } 
+  ]
 
   $('.mark-aff-link').on('mouseup', () ->
     $(this).blur()
@@ -30,21 +42,24 @@ $(() ->
       row_badge.html(yesBadge.clone())
     else
       row_badge.html(notBadge.clone())
-
   )
 
   $('#search-input').on('keyup', (evt) ->
     input = evt.target
-    filter = input.value.toUpperCase()
-    table = $('table')
-    tr = table.find('tr.member_row')
+    searchValue = input.value.toUpperCase()
 
-    for row in tr
+    searchField = $('#current-search').attr('data-search-field')
+
+    table = $('table')
+    tableRows = table.find('tr.member_row')
+
+    for row in tableRows
       row = $(row)
       do ->
-        td = $(row.find('td.search-name'))
+        searchSelector = 'td[data-search-field="' + searchField + '"]'
+        td = $(row.find(searchSelector))
         if td
-          if td.text().toUpperCase().indexOf(filter) > -1
+          if td.text().toUpperCase().indexOf(searchValue) > -1
             row.removeClass('hidden')
           else
             row.addClass('hidden')
@@ -62,4 +77,43 @@ $(() ->
       memberRow.removeClass('submitting-completed')
     , 200)
 
+  switchSearchFilter = (evt) ->
+    newSearchType = $(evt.target).attr('data-search-field')
+    currentSearch = $('#current-search')
+
+    for searchField in searchFields
+      if searchField.fieldName == newSearchType
+        currentSearch.attr('data-search-field', newSearchType)
+        currentSearch.html(searchField.displayName)
+
+    constructSearchFilter()
+    searchInput = $('#search-input')
+    searchInput.val('')
+    searchInput.keyup()
+
+
+
+  constructSearchFilter = () ->
+    currentSearch = $('#current-search').attr('data-search-field')
+
+    otherFieldsList = $('#other-fields')
+    otherFieldsList.empty();
+
+    for searchField in searchFields
+      if searchField.fieldName == currentSearch
+        continue
+      searchFieldElement = $('
+        <li>
+          <a href="#"
+            data-search-field="' + searchField.fieldName + '">
+              ' + searchField.displayName + '
+          </a>
+        </li>
+      ')
+      otherFieldsList.append(searchFieldElement)
+
+    $('#other-fields a').on('click', (evt) ->
+      switchSearchFilter(evt)
+    )
+  constructSearchFilter()
 )

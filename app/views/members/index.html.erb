@@ -13,17 +13,38 @@
         <% end %> -->
         <div class="input-group has-feedback has-feedback-right">
           <div class="input-group-btn">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button id="current-search"
+                type="button"
+                class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                data-search-field="name">
               Name
             </button>
-            <ul class="dropdown-menu">
-              <li><a href='#'>Belt</a></li>
-              <li><a href='#'>Affiliated</a></li>
+            <!-- values are brought in from members.coffee -->
+            <ul id="other-fields" class="dropdown-menu">
+              <!-- <li><a href="#" data-search-field="belt">Belt</a></li>
+              <li><a href="#">Affiliated</a></li> -->
             </ul>
           </div><!-- .btn-group -->
-          <input type="text" class="form-control" aria-label="search" id="search-input"/>
+          <input id="search-input" type="text" class="form-control" aria-label="search" />
           <i class="form-control-feedback glyphicon glyphicon-search"></i>
+
+          <!-- <div class="row">
+            <div class="col-xs-6">
+              <input id="search-input" type="text" class="form-control"  aria-label="search"/>
+            </div> -->
+            <!-- <div class="col-xs-2"> -->
+              <!-- <label class="switch ">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label> -->
+            <!-- </div> -->
+          <!-- </div> -->
+
         </div><!-- .input-group -->
+
       </div>
       <div class="col-xs-4 offset-bottom pull-right orrset-right">
         <div class="btn-group pull-right">
@@ -63,21 +84,21 @@
               <!-- <td class="table-cell-id">
                 <%= member.id %>
               </td> -->
-              <td class="search-name">
+              <td data-search-field="name">
                 <%= link_to club_member_path(@club, member), class: 'text-nowrap' do %>
                   <%= member.first_name %>
                   <%= member.last_name %>
                 <% end %>
               </td>
-              <td class="search-belt">
+              <td data-search-field="belt">
                 <div class="small text-nowrap">
                   <%= member.belt %>
                 </div>
               </td>
-              <td class="text-center search-age">
+              <td class="text-center" data-search-field="age">
                 <%= member.age %>
               </td>
-              <td class="text-center affiliation_badge search-affiliated">
+              <td class="text-center affiliation_badge" data-search-field="affiliated">
                 <%= render 'components/affiliation_badge', is_affiliated: member.is_affiliated %>
               </td>
               <td class="table-cell-actions">

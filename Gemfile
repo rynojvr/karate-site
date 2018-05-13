@@ -26,6 +26,8 @@ gem 'will_paginate'
 
 gem 'wicked_pdf'
 
+gem 'carrierwave'
+
 # END CUSTOM GEMS
 
 

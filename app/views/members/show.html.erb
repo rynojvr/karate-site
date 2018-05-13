@@ -20,7 +20,7 @@
   <div class="row">
     <div class="container col-xs-9">
       <h1 class="section-header-title">Member Profile</h1>
-      <h2 class="secltion-header-subtitle">Club Name</h2>
+      <!-- <h2 class="secltion-header-subtitle">Club Name</h2> -->
     </div><!-- .container -->
     <div class="container col-xs-2 pull-right">
       <div class="offset-bottom pull-right">
@@ -33,6 +33,7 @@
             <span class="sr-only">Toggle Dropdown</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
+            <li><%= link_to 'Edit', edit_club_member_path(@club, @member) %></li>
             <li><a href="#">Action</a></li>
             <li><a href="#">Other action</a></li>
             <li role="separator" class="divider"></li>
@@ -46,6 +47,10 @@
 <section class="section-content">
   <div class="container">
     <div class="row offset-bottom">
+      <h4>Member Image:</h4>
+      <%= image_tag @member.avatar.url, size: 140 %>
+    </div>
+    <div class="row">
       <div class="col-sm-5">
         <h4>First name:</h4>
         <p>

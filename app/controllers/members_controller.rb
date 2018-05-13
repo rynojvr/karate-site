@@ -67,7 +67,7 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to club_member_path @club, @member, notice: 'Member was successfully updated.' }
+        format.html { redirect_to club_member_path @club, @member } #, notice: 'Member was successfully updated.' }
         format.json { render :show, status: :ok, location: @member }
       else
         format.html { render :edit }
@@ -81,7 +81,7 @@ class MembersController < ApplicationController
   def destroy
     @member.destroy
     respond_to do |format|
-      format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
+      format.html { redirect_to members_url } #, notice: 'Member was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -111,7 +111,20 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:first_name, :last_name, :date_of_birth, :race, :residential_address, :code, :cell_number, :email, :current_weight, :current_height, :belt, :is_affiliated)
+      params.require(:member).permit(:first_name,
+        :last_name,
+        :date_of_birth,
+        :race,
+        :residential_address,
+        :code,
+        :cell_number,
+        :email,
+        :current_weight,
+        :current_height,
+        :belt,
+        :is_affiliated,
+        :avatar,
+        :remove_avatar)
     end
 
     def set_nav_category

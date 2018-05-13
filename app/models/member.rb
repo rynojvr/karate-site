@@ -2,6 +2,8 @@ class Member < ApplicationRecord
   belongs_to :club
   attr_accessor :age
 
+  mount_uploader :avatar, MemberAvatarUploader
+
   validates :first_name,
       presence: true,
       length: {

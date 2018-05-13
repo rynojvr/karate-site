@@ -8,6 +8,7 @@
 /.bundle
 /vendor/bundle
 /public/assets
+/public/uploads
 
 # Ignore the default SQLite database.
 /db/*.sqlite3

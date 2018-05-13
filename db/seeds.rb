@@ -215,50 +215,52 @@ provinces.each do |prov_data|
     # Create Districts
     dist = prov.districts.find_or_create_by(district_data)
 
-    # Only when seeding the first time. Idempotency and whatnot
-    if dist.clubs.count == 0
-      num_clubs = rand(1..5)
-      puts "[+] Creating clubs..." if dist.clubs.count < num_clubs
-      while dist.clubs.count < num_clubs do
-        club_name = "#{Faker::Company.name} Dojo"
-        puts "[+] Creating club '#{club_name}'"
-        club = dist.clubs.create(
-          name: club_name,
-          cell: Faker::PhoneNumber.cell_phone,
-          email: Faker::Internet.free_email,
-          sensei: Faker::Name.name,
-          contact_number: Faker::PhoneNumber.cell_phone,
-          landline: Faker::PhoneNumber.cell_phone
-        )
-
-        num_members = rand(5..45)
-        puts "[+] with #{num_members} members..."
-        num_members.times do |n|
-          # puts "[-] Student ##{n}"
-          club.members.create(
-            first_name: Faker::Name.first_name,
-            last_name: Faker::Name.last_name,
-            date_of_birth: Faker::Date.birthday,
-            race: Faker::Demographic.race,
-            residential_address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}",
-            code: Faker::Address.postcode,
-            cell_number: Faker::PhoneNumber.cell_phone,
+    if not Rails.env.production?
+      # Only when seeding the first time. Idempotency and whatnot
+      if dist.clubs.count == 0
+        num_clubs = rand(1..5)
+        puts "[+] Creating clubs..." if dist.clubs.count < num_clubs
+        while dist.clubs.count < num_clubs do
+          club_name = "#{Faker::Company.name} Dojo"
+          puts "[+] Creating club '#{club_name}'"
+          club = dist.clubs.create(
+            name: club_name,
+            cell: Faker::PhoneNumber.cell_phone,
             email: Faker::Internet.free_email,
-            belt: %w(
-              white
-              orange
-              yellow
-              white-green
-              green
-              purple
-              blue
-              brown
-              red
-              red-black
-              black
-            ).sample,
-            is_affiliated: [true, false].sample
+            sensei: Faker::Name.name,
+            contact_number: Faker::PhoneNumber.cell_phone,
+            landline: Faker::PhoneNumber.cell_phone
           )
+
+          num_members = rand(5..45)
+          puts "[+] with #{num_members} members..."
+          num_members.times do |n|
+            # puts "[-] Student ##{n}"
+            club.members.create(
+              first_name: Faker::Name.first_name,
+              last_name: Faker::Name.last_name,
+              date_of_birth: Faker::Date.birthday,
+              race: Faker::Demographic.race,
+              residential_address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.state}",
+              code: Faker::Address.postcode,
+              cell_number: Faker::PhoneNumber.cell_phone,
+              email: Faker::Internet.free_email,
+              belt: %w(
+                white
+                orange
+                yellow
+                white-green
+                green
+                purple
+                blue
+                brown
+                red
+                red-black
+                black
+              ).sample,
+              is_affiliated: [true, false].sample
+            )
+          end
         end
       end
     end

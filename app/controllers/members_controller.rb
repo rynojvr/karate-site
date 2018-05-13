@@ -22,6 +22,12 @@ class MembersController < ApplicationController
   # GET /members.json
   def index
     # @members = @club.members.order(last_name: :asc, first_name: :asc)
+    respond_to do |format|
+      format.html
+      format.xlsx do
+        render xlsx: 'index', filename: "DojoForm_#{@club.name}.xlsx"
+      end
+    end
   end
 
   # GET /members/1

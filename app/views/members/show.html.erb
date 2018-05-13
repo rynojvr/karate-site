@@ -48,7 +48,9 @@
   <div class="container">
     <div class="row offset-bottom">
       <h4>Member Image:</h4>
-      <%= image_tag @member.avatar.url, size: 140 %>
+      <% if not @member.avatar.url.nil? %>
+        <%= image_tag @member.avatar.url, size: 140 %>
+      <% end %>
     </div>
     <div class="row">
       <div class="col-sm-5">

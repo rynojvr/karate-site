@@ -1,0 +1,104 @@
+wb = xlsx_package.workbook
+wb.styles do |s|
+  wb.add_worksheet do |sheet|
+    header_spacing_rows_count = 5
+
+    style_headline = s.add_style(
+      font_name: 'Calibri',
+      sz: 22,
+      b: true
+    )
+    style_header_label = s.add_style(
+      font_name: 'Calibri',
+      sz: 11,
+      bg_color: 'D6DCE4',
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :left, :right, :bottom]
+      }
+    )
+    style_header_field = s.add_style(
+      font_name: 'Calibri',
+      sz: 11,
+    )
+    style_content_header = s.add_style(
+      font_name: 'Impact',
+      sz: 14,
+      alignment: {
+        horizontal: :center
+      }
+    )
+
+    sheet.add_row(['KARATE SOUTH AFRICA - STUDENT REGISTRATION FORM - 2018'], style: style_headline, widths: [:ignore])
+    sheet.add_row()
+    sheet.add_row(['Province', @club.district.province.name],
+      style: [style_header_label, style_header_field])
+    sheet.add_row(['Region', @club.district.name],
+      style: [style_header_label, style_header_field])
+    sheet.add_row(['Dojo Name', @club.name],
+      style: [style_header_label, style_header_field])
+    sheet.add_row(['Sensei', @club.sensei],
+      style: [style_header_label, style_header_field])
+    sheet.add_row(['Contact Numbers', @club.contact_number],
+      style: [style_header_label, style_header_field])
+    sheet.add_row(['Cell', @club.cell],
+      style: [style_header_label, style_header_field])
+    sheet.add_row(['Land Line', @club.landline],
+      style: [style_header_label, style_header_field])
+    sheet.add_row(['Email address', @club.email],
+      style: [style_header_label, style_header_field])
+
+    header_spacing_rows_count.times do
+      sheet.add_row
+    end
+
+    sheet.add_row([
+      'EXISTING BAR CODE',
+      'NAME',
+      'SURNAME',
+      'D.O.B.',
+      'ID NUMBER',
+      'RACE',
+      'SEX',
+      'WEIGHT',
+      'HEIGHT',
+      'BELT',
+      'RESIDENTIAL ADDRESS',
+      'POSTAL CODE',
+      'PARENT/GUARDIAN',
+      'CELL NUMBER',
+      'EMAIL',
+      'DOJO',
+      'SENSI',
+      'CELL NUMBER',
+      'EMAIL',
+      'REGION'
+      ], style: style_content_header, height: 70)
+
+    @club.members.each do |member|
+      sheet.add_row([
+        '',
+        member.first_name,
+        member.last_name,
+        member.date_of_birth,
+        member.id,
+        member.race,
+        'N/A (not tracked)',
+        member.current_weight,
+        member.current_height,
+        member.belt,
+        member.residential_address,
+        member.code,
+        'N/A (not tracked)',
+        member.cell_number,
+        member.email,
+        member.club.name,
+        member.club.sensei,
+        member.club.cell,
+        member.club.email,
+        member.club.district.name
+      ])
+    end
+  end
+end

@@ -2,7 +2,11 @@
 <h3>STUDENT AFFILIATION FORM - <%= Time.now.year %></h3>
 <div class="container">
   <div class="row">
-    <%= wicked_pdf_image_tag(@member.avatar.url, size: 140) %>
+    <% if @member.avatar.url.nil? %>
+      <%= wicked_pdf_image_tag('default_member.jpg', size: 140) %>
+    <% else %>
+      <%= wicked_pdf_image_tag(@member.avatar.url, size: 140) %>
+    <% end %>
     <div class="pull-right">
       <%= wicked_pdf_image_tag('jkf_logo.png', size: 140) %>
     </div>

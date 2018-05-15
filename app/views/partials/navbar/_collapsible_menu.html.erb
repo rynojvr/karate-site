@@ -63,7 +63,7 @@
       <ul class="dropdown-menu">
         <li class="dropdown-header">
           <%= link_to edit_user_path(current_user), title: 'Settings' do %>
-            <%= current_user.name %>
+            <%= current_user.finished_registration? ? current_user.name : 'New User' %>
           <% end %>
         </li>
         <li class="divider"></li>

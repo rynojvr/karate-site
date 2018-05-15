@@ -4,14 +4,14 @@
     <%= devise_error_messages! %>
 
     <div class="form-group">
-      <%= f.label :email, clas: 'control-label' %>
+      <%= f.label :email, class: 'control-label' %>
       <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
     </div>
 
     <div class="form-group">
       <div class="control-label row">
         <div class="col-sm-3">
-          <%= f.label :password, class: 'cosfasl-smdad-3' %>
+          <%= f.label :password %>
         </div>
         <div class="col-sm-9">
           <% if @minimum_password_length %>

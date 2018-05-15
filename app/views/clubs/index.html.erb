@@ -70,7 +70,11 @@
                       <th>Cell</th>
                       <th>Landline</th>
                       <th colspan="3"></th> -->
-                      <th></th> <!-- For the edit button -->
+                      <th>
+                        <%= link_to district_club_path(district, format: :xlsx), class: 'item-action pull-right' do %>
+                          <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                        <% end %>
+                      </th> <!-- For the edit button -->
                     </tr>
                   </thead>
 

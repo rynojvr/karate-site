@@ -23,7 +23,10 @@ class ClubsController < ApplicationController
     @districts_by_letter = Hash.new { |h,k| h[k] = [] }
     @districts_by_letter[@current_district.name[0].downcase] << @current_district
 
-    render 'index'
+    respond_to do |format|
+      format.html { render 'index' }
+      format.xlsx { render xlsx: 'master_form', filename: "MasterForm_#{@current_district.name}.xlsx" }
+    end
   end
 
   # GET /clubs/1

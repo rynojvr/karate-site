@@ -1,0 +1,233 @@
+wb = xlsx_package.workbook
+wb.styles do |s|
+  wb.add_worksheet(name: 'Summary of Clubs') do |sheet|
+
+    style_header = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      bg_color: 'D6DCE4',
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :left, :right, :bottom]
+      }
+    )
+    style_headline = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      b: true,
+      i: true,
+      alignment: {
+        horizontal: :center
+      },
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :left, :right, :bottom]
+      }
+    )
+    style_footer = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      b: true,
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :left, :right, :bottom]
+      }
+    )
+    style_sub_header = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      b: true,
+      u: true
+    )
+    style_bottom_box = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      border: {
+        style: :thin,
+        color: '0000000',
+        edges: [:top, :left, :right, :bottom]
+      }
+    )
+    style_header_name = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      bg_color: 'D6DCE4',
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :left, :right, :bottom]
+      }
+    )
+    style_header_value = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :left, :right, :bottom]
+      }
+    )
+    style_body_header_left = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      bg_color: 'FFFF66',
+      b: true,
+      u: true,
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :left, :bottom]
+      },
+      alignment: {
+        horizontal: :center
+      }
+    )
+    style_body_header_center = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      bg_color: 'FFFF66',
+      b: true,
+      u: true,
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :bottom]
+      },
+      alignment: {
+        horizontal: :center
+      }
+    )
+    style_body_header_right = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      bg_color: 'FFFF66',
+      b: true,
+      u: true,
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :right, :bottom]
+      },
+      alignment: {
+        horizontal: :center
+      }
+    )
+    style_body = s.add_style(
+      font_name: 'Calibri',
+      sz: 12,
+      border: {
+        style: :thin,
+        color: '000000',
+        edges: [:top, :left, :right, :bottom]
+      }
+    )
+
+    sheet.add_row(['', "Province: #{@current_district.province.name}", "District: #{@current_district.name}"], style: [nil, style_header, style_header])
+    sheet.add_row([
+      '',
+      'Dojo',
+      'Name of Sensei',
+      'No of Students Affiliated',
+      'KSA Registration Form',
+      'List of Students',
+      'Owing to GKF'
+      ], style: [nil, Array.new(6, style_headline)].flatten)
+
+    count = 1
+    total_sum = 0
+    @current_district.clubs.each do |club|
+      club_count = club.members.where(is_affiliated: true).count
+      sheet.add_row([
+        count,
+        club.name,
+        club.sensei,
+        club_count,
+        'N/A',
+        'N/A',
+        'Much'
+        ], style: style_body)
+      count += 1
+      total_sum += club_count
+    end
+    sheet.add_row(Array.new(7, ''), style: style_body)
+
+    footer_styles = Array.new(6, style_footer)
+    sheet.add_row(['', 'Sub Total', '', total_sum, '', '', 'R 0.00'], style: [nil, footer_styles].flatten)
+    sheet.add_row(['', 'LATE AFFILIATIONS', ], style: [nil, style_sub_header])
+
+    total_sum = 0
+    @current_district.clubs.each do |club|
+      club_count = club.members.where(is_affiliated: false).count
+      bottom_box_styles = Array.new(6, style_bottom_box)
+      sheet.add_row([
+        '',
+        club.name,
+        club.sensei,
+        club_count,
+        'N/A',
+        'N/A',
+        'Some'
+        ], style: [nil, bottom_box_styles].flatten)
+        total_sum += club_count
+    end
+
+    footer_styles = Array.new(6, style_footer)
+    sheet.add_row(['', 'Sub Total', '', total_sum, '', '', 'R 0.00'],
+      style: [nil, footer_styles].flatten)
+
+    @current_district.clubs.each do |club|
+      wb.add_worksheet(name: club.name[0..30]) do |club_sheet|
+        club_sheet.add_row
+        club_sheet.add_row(['', 'Province', club.district.province.name], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row
+        club_sheet.add_row(['', 'Dojo Name', club.name], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row(['', 'Sensei', club.sensei], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row(['', 'Contact Numbers', club.contact_number], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row(['', 'Cell',  club.cell], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row(['', 'Land Line', club.landline], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row(['', 'Email Address', club.email], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row
+        club_sheet.add_row(['', 'Dojo Affiliation Fee', ''], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row(['', 'Proof', ''], style: [nil, style_header_name, style_header_value])
+        club_sheet.add_row
+        club_sheet.add_row(['', '', '', '', '', 'Karateka Details', '', '', '', '', ''].flatten, style: [nil, style_body_header_left, style_body_header_center, style_body_header_center, style_body_header_center, style_body_header_center, style_body_header_center, style_body_header_center, style_body_header_center, style_body_header_center, style_body_header_right].flatten)
+        club_sheet.add_row([
+          '',
+          'Name and Surname',
+          'I.D. Number',
+          'Gender (M/F)',
+          'Race (B/C/I/W)',
+          'Age',
+          'Belt',
+          'Affiliation Fee Paid',
+          'Proof of Payment',
+          'Tel No. of Karateka',
+          'E-Mail of Karateka'
+          ], style: [nil, Array.new(10, style_header_name)].flatten)
+
+        count = 1
+        club.members.each do |member|
+          club_sheet.add_row([
+            count,
+            member.full_name,
+            'N/A',
+            'N/A',
+            member.race,
+            member.age,
+            member.belt,
+            member.is_affiliated ? 'Y' : 'N',
+            'N/A',
+            club.contact_number,
+            club.email], style: [
+              nil,
+              Array.new(10, style_body)
+            ].flatten)
+          count += 1
+        end
+      end
+    end
+  end
+end

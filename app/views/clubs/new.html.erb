@@ -1,5 +1,14 @@
-<h1>New Club</h1>
+<%= render 'partials/headline',
+    headline: "All Clubs > #{current_province.name}",
+    page_name: 'clubs',
+    current_tab: 'new' %>
 
-<%= render 'form', club: @club %>
+<div class="section-content">
+  <div class="container">
 
-<%= link_to 'Back', clubs_path %>
+    <h1>New Club</h1>
+
+    <%= render 'form', club: @club %>
+
+  </div>
+</div>

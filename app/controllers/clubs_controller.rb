@@ -48,7 +48,11 @@ class ClubsController < ApplicationController
   # POST /clubs
   # POST /clubs.json
   def create
-    @club = Club.new(club_params)
+    district = District.find(club_params[:district_id])
+    set_current_province(district.province)
+
+    # @club = Club.new(club_params)
+    @club = district.clubs.build(club_params)
 
     respond_to do |format|
       if @club.save
@@ -65,6 +69,9 @@ class ClubsController < ApplicationController
   # PATCH/PUT /clubs/1.json
   def update
     respond_to do |format|
+      district = District.find(club_params[:district_id])
+      set_current_province(district.province)
+      @club.district = district
       if @club.update(club_params)
         format.html { redirect_to @club, notice: 'Club was successfully updated.' }
         format.json { render :show, status: :ok, location: @club }
@@ -93,6 +100,7 @@ class ClubsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def club_params
-      params.require(:club).permit(:name, :cell, :email, :sensei, :contact_number, :cell, :landline)
+      # params.require(:club).permit(:district).permit(:id)
+      params.require(:club).permit(:district_id, :slug, :name, :cell, :email, :sensei, :contact_number, :cell, :landline)
     end
 end

@@ -24,4 +24,12 @@ module ApplicationHelper
     end
   end
 
+  def set_current_province(province)
+    if session
+      session[:province_id] = province.id
+      @current_province = nil
+    end
+    return !session.nil?
+  end
+
 end
